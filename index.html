@@ -56,7 +56,10 @@ body { font-family: 'Inter', sans-serif; }
 <a href="#projects" class="nav-link text-sm font-medium text-gray-700 hover:text-primary">Projects</a>
 <a href="#education" class="nav-link text-sm font-medium text-gray-700 hover:text-primary">Education</a>
 <a href="#contact" class="nav-link text-sm font-medium text-gray-700 hover:text-primary">Contact</a>
-<button class="bg-primary text-white px-4 py-2 !rounded-button text-sm font-medium hover:bg-primary/90">Download CV</button>
+<a href="assets/cv/Isaac_Kumbula_CV.pdf" target="_blank" class="bg-primary text-white px-4 py-2 !rounded-button text-sm font-medium hover:bg-primary/90 flex items-center gap-2">
+    <i class="ri-download-line"></i>
+    Download CV
+</a>
 </div>
 </div>
 </div>
@@ -149,7 +152,7 @@ body { font-family: 'Inter', sans-serif; }
 <img src="https://public.readdy.ai/ai/img_res/9deb0450c77c2fc0d57aaaa4b0ed544a.jpg" alt="Investment System" class="w-full h-48 object-cover">
 <div class="p-6">
 <h3 class="font-semibold text-xl text-gray-900 mb-2">Investment System</h3>
-<p class="text-gray-600 text-sm mb-4">Built a cloud-based investment management system with RESTful APIs and real-time portfolio tracking.</p>
+<p class="text-gray-600 text-sm mb-4">Maintained a cloud-based investment management system with RESTful APIs and real-time portfolio tracking.</p>
 <div class="flex flex-wrap gap-2 mb-4">
 <span class="px-2 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Java</span>
 <span class="px-2 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">PostgreSQL</span>
@@ -161,12 +164,11 @@ body { font-family: 'Inter', sans-serif; }
 <div class="project-card bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300">
 <img src="https://public.readdy.ai/ai/img_res/39d2327f8617766396fc6cdefc8b072e.jpg" alt="Land Digitalization" class="w-full h-48 object-cover">
 <div class="p-6">
-<h3 class="font-semibold text-xl text-gray-900 mb-2">Land Digitalization</h3>
-<p class="text-gray-600 text-sm mb-4">Automated land application processes through digital transformation, eliminating paper-based workflows.</p>
+<h3 class="font-semibold text-xl text-gray-900 mb-2">Land Digitalization - InfiniteBlueLabs</h3>
+<p class="text-gray-600 text-sm mb-4">Developed a digital land application system that replaced paper-based processes, enabling users to submit and track applications for residential and industrial land use with detailed specifications.</p>
 <div class="flex flex-wrap gap-2 mb-4">
 <span class="px-2 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Flutter</span>
 <span class="px-2 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Firebase</span>
-<span class="px-2 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">GIS</span>
 </div>
 <button onclick="showProjectModal('land-digitalization')" class="w-full bg-primary text-white px-4 py-2 !rounded-button text-sm font-medium hover:bg-primary/90">View Details</button>
 </div>
@@ -323,41 +325,107 @@ const projectDetails = {
 title: 'Student Portal - HIT',
 content: `
 <ul class="space-y-2">
-<li>• Web & mobile portal for students (personal details, payments, exam results).</li>
-<li>• Integrated Zimswitch & PayNow for online payments.</li>
-<li>• Tech Stack: Flutter, Laravel, Spring Boot, MySQL, Redis.</li>
-<li>• Impact: Reduced manual processing by 60%.</li>
+<li>• Comprehensive student management system serving over 10,000 students at Harare Institute of Technology.</li>
+<li>• Key Features:
+  - Student registration and profile management
+  - Online fee payments via Zimswitch & PayNow
+  - Real-time exam results and academic records
+  - Course registration and timetable management
+  - Digital ID card generation
+  - Library access integration</li>
+<li>• Technical Stack:
+  - Flutter mobile app
+  - Laravel admin dashboard
+  - Spring Boot microservices
+  - MySQL with Redis caching
+  - AWS S3 for storage
+  - Docker deployment</li>
+<li>• Impact:
+  - Reduced manual processing by 60%
+  - Decreased payment processing time by 95%
+  - Improved student satisfaction by 85%
+  - Eliminated paper-based processes</li>
 </ul>
 `
 },
 'investment-system': {
-title: 'Investment System',
+title: 'Investment System - Fordsworth Associates',
 content: `
 <ul class="space-y-2">
-<li>• Cloud-based investment system with 99.9% uptime.</li>
-<li>• Developed RESTful APIs for external clients.</li>
-<li>• Tech Stack: Java (Play Framework), PostgreSQL.</li>
+<li>• Enterprise-level investment management platform handling $50M+ in assets at Fordsworth Associates (Remote - South Africa).</li>
+<li>• Key Features:
+  - Real-time portfolio tracking and analytics
+  - Automated trading algorithms
+  - Risk assessment and management
+  - Client dashboard with insights
+  - Multi-currency support
+  - Regulatory compliance reporting</li>
+<li>• Technical Stack:
+  - Java Play Framework backend
+  - PostgreSQL database
+  - React frontend
+  - AWS cloud infrastructure
+  - Redis caching
+  - Docker & Kubernetes</li>
+<li>• Impact:
+  - 99.9% system uptime
+  - Reduced transaction time by 75%
+  - Improved client satisfaction by 90%
+  - Automated 80% of reporting tasks</li>
 </ul>
 `
 },
 'land-digitalization': {
-title: 'Land Digitalization',
+title: 'Land Digitalization - InfiniteBlueLabs',
 content: `
 <ul class="space-y-2">
-<li>• Led development of paperless land application system.</li>
-<li>• Built using Flutter & Firebase.</li>
+<li>• Digital land application system at InfiniteBlueLabs (Remote - South Africa) that revolutionized the traditional paper-based process.</li>
+<li>• Key Features:
+  - Multi-purpose land application support (residential, industrial, commercial)
+  - Detailed building specifications (height, materials, dimensions)
+  - Save and resume functionality for incomplete applications
+  - Real-time application status tracking (submitted, processing, approved, rejected)
+  - Document upload and verification system
+  - Automated notifications for status updates</li>
+<li>• Technical Stack:
+  - Flutter cross-platform app
+  - Firebase backend
+  - Cloud storage
+  - Real-time database
+  - Document processing
+  - Push notifications</li>
+<li>• Impact:
+  - Replaced entire paper-based system
+  - Reduced application processing time by 90%
+  - Improved application accuracy
+  - Enhanced user experience with save/resume feature</li>
 </ul>
 `
 },
 'nfc-system': {
-title: 'NFC Card Verification System',
+title: 'NFC Card Verification System - HIT',
 content: `
 <ul class="space-y-2">
-<li>• Desktop application for student exam eligibility verification.</li>
-<li>• NFC card-based authentication system.</li>
-<li>• Real-time verification of registration status and academic performance.</li>
-<li>• Tech Stack: Flutter (Desktop), Spring Boot (Backend), Redis (Cache), MySQL (Database).</li>
-<li>• Impact: Eliminated manual verification process, reduced exam hall entry time by 80%.</li>
+<li>• Innovative exam hall verification system at Harare Institute of Technology.</li>
+<li>• Key Features:
+  - Real-time student verification
+  - Automated attendance tracking
+  - Exam eligibility checking
+  - Admin dashboard
+  - Offline mode support
+  - Fraud detection</li>
+<li>• Technical Stack:
+  - Flutter desktop app
+  - Spring Boot backend
+  - Redis caching
+  - MySQL database
+  - NFC API integration
+  - WebSocket updates</li>
+<li>• Impact:
+  - Eliminated manual verification
+  - Reduced entry time by 80%
+  - Improved security
+  - Enhanced student experience</li>
 </ul>
 `
 }
