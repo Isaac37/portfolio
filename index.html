@@ -114,7 +114,7 @@ transition: transform 0.3s ease;
 <p class="text-xl text-gray-600 mb-8">Building robust, scalable applications with modern technologies. Specialized in Flutter, Laravel, and Spring Boot development.</p>
 <div class="flex space-x-4">
 <button onclick="scrollToProjects()" class="bg-primary text-white px-6 py-3 !rounded-button text-sm font-medium hover:bg-primary/90">View My Work</button>
-<button class="border border-primary text-primary px-6 py-3 !rounded-button text-sm font-medium hover:bg-primary/5">Contact Me</button>
+<button  onclick="scrollToContact()" class="border border-primary text-primary px-6 py-3 !rounded-button text-sm font-medium hover:bg-primary/5">Contact Me</button>
 </div>
 </div>
 <div class="relative">
@@ -334,6 +334,15 @@ transition: transform 0.3s ease;
 </div>
 </footer>
 <script>
+    function scrollToContact() {
+    const contactSection = document.getElementById('contact');
+    const navHeight = document.querySelector('nav').offsetHeight;
+    const targetPosition = contactSection.offsetTop - navHeight;
+    window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+    });
+}
 function scrollToProjects() {
 const projectsSection = document.getElementById('projects');
 const navHeight = document.querySelector('nav').offsetHeight;
