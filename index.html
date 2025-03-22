@@ -53,7 +53,7 @@ color: var(--primary);
 .hover\:bg-primary\/90:hover {
 background-color: rgba(30, 58, 138, 0.9);
 }
-.!rounded-button {
+.rounded-button {
 border-radius: 9999px !important;
 }
 html {
@@ -81,6 +81,49 @@ transition: transform 0.3s ease;
 .project-card {
 transition: transform 0.3s ease;
 }
+
+/* Add these new styles for mobile menu animation */
+#mobile-menu {
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+#mobile-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Hamburger icon transition */
+#mobile-menu-button i {
+  transition: transform 0.3s ease;
+}
+
+#mobile-menu-button.active i {
+  transform: rotate(180deg);
+}
+
+/* Mobile menu items animation */
+#mobile-menu .nav-link {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  transition-delay: calc(var(--index) * 0.1s);
+}
+
+#mobile-menu.show .nav-link {
+  opacity: 1;
+  transform: translateX(0);
+}
 </style>
 </head>
 <body class="bg-gray-50">
@@ -88,8 +131,12 @@ transition: transform 0.3s ease;
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex justify-between h-16">
 <div class="flex items-center">
-<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 <a href="#" class="text-2xl font-['Righteous'] text-primary">Isaac K.</a>
+</div>
+<div class="md:hidden flex items-center">
+<button id="mobile-menu-button" class="text-gray-600 hover:text-primary">
+<i class="ri-menu-line ri-lg"></i>
+</button>
 </div>
 <div class="hidden md:flex items-center space-x-8">
 <a href="#home" class="nav-link active text-sm font-medium">Home</a>
@@ -104,6 +151,20 @@ transition: transform 0.3s ease;
 </div>
 </div>
 </div>
+<div id="mobile-menu" class="hidden md:hidden">
+<div class="px-2 pt-2 pb-3 space-y-1">
+<a href="#home" class="nav-link active block text-sm font-medium px-3 py-2">Home</a>
+<a href="#about" class="nav-link block text-sm font-medium text-gray-700 hover:text-primary px-3 py-2">About</a>
+<a href="#projects" class="nav-link block text-sm font-medium text-gray-700 hover:text-primary px-3 py-2">Projects</a>
+<a href="#education" class="nav-link block text-sm font-medium text-gray-700 hover:text-primary px-3 py-2">Education</a>
+<a href="#contact" class="nav-link block text-sm font-medium text-gray-700 hover:text-primary px-3 py-2">Contact</a>
+<a href="assets/cv/CV.pdf" target="_blank" class="block bg-primary text-white px-4 py-2 !rounded-button text-sm font-medium hover:bg-primary/90 mt-4">
+  <i class="ri-download-line"></i>
+  Download CV
+</a>
+</div>
+</div>
+</div>
 </nav>
 <section id="home" class="pt-24 pb-16 relative overflow-hidden">
 <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://public.readdy.ai/ai/img_res/d7057c75cd1e84be89792e84133849aa.jpg'); opacity: 0.1;"></div>
@@ -114,7 +175,7 @@ transition: transform 0.3s ease;
 <p class="text-xl text-gray-600 mb-8">Building robust, scalable applications with modern technologies. Specialized in Flutter, Laravel, and Spring Boot development.</p>
 <div class="flex space-x-4">
 <button onclick="scrollToProjects()" class="bg-primary text-white px-6 py-3 !rounded-button text-sm font-medium hover:bg-primary/90">View My Work</button>
-<button class="border border-primary text-primary px-6 py-3 !rounded-button text-sm font-medium hover:bg-primary/5">Contact Me</button>
+<button onclick="scrollToContact()"  class="border border-primary text-primary px-6 py-3 !rounded-button text-sm font-medium hover:bg-primary/5">Contact Me</button>
 </div>
 </div>
 <div class="relative">
@@ -130,7 +191,7 @@ transition: transform 0.3s ease;
 <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">About Me</h2>
 <div class="grid md:grid-cols-2 gap-12">
 <div>
-<p class="text-gray-600 mb-6">With over 5 years of experience in full-stack development, I specialize in building scalable web applications and mobile solutions. My passion lies in creating efficient, user-friendly applications that solve real-world problems.</p>
+<p class="text-gray-600 mb-6">With over 4 years of experience in full-stack development, I specialize in building scalable web applications and mobile solutions. My passion lies in creating efficient, user-friendly applications that solve real-world problems.</p>
 <p class="text-gray-600">I'm constantly learning and adapting to new technologies, with a particular focus on cloud architecture and security best practices. My approach combines technical expertise with business acumen to deliver solutions that drive real value.</p>
 </div>
 <div class="grid grid-cols-2 gap-4">
@@ -334,6 +395,18 @@ transition: transform 0.3s ease;
 </div>
 </footer>
 <script>
+function scrollToContact() {
+    const contactSection = document.getElementById('contact');
+    const navHeight = document.querySelector('nav').offsetHeight;
+    const targetPosition = contactSection.offsetTop - navHeight;
+    window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+    });
+}
+
+
+
 function scrollToProjects() {
 const projectsSection = document.getElementById('projects');
 const navHeight = document.querySelector('nav').offsetHeight;
@@ -508,6 +581,61 @@ link.classList.add('active');
 });
 }
 window.addEventListener('scroll', updateActiveLink);
+});
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  // Add animation delay to menu items
+  const menuItems = mobileMenu.querySelectorAll('.nav-link');
+  menuItems.forEach((item, index) => {
+    item.style.setProperty('--index', index);
+  });
+
+  mobileMenuButton.addEventListener('click', function() {
+    // Toggle menu visibility with animation classes
+    if (!mobileMenu.classList.contains('show')) {
+      mobileMenu.classList.remove('hidden');
+      // Trigger reflow to ensure transition works
+      mobileMenu.offsetHeight;
+      mobileMenu.classList.add('show');
+      mobileMenuButton.classList.add('active');
+      mobileMenuButton.innerHTML = '<i class="ri-close-line ri-lg"></i>';
+    } else {
+      mobileMenu.classList.remove('show');
+      mobileMenuButton.classList.remove('active');
+      mobileMenuButton.innerHTML = '<i class="ri-menu-line ri-lg"></i>';
+      // Wait for animation to complete before hiding
+      setTimeout(() => {
+        mobileMenu.classList.add('hidden');
+      }, 300);
+    }
+  });
+
+  // Close mobile menu when clicking a link
+  const mobileLinks = mobileMenu.querySelectorAll('a');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('show');
+      mobileMenuButton.classList.remove('active');
+      mobileMenuButton.innerHTML = '<i class="ri-menu-line ri-lg"></i>';
+      setTimeout(() => {
+        mobileMenu.classList.add('hidden');
+      }, 300);
+    });
+  });
+
+  // Close mobile menu when resizing to desktop view
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) { // md breakpoint
+      mobileMenu.classList.remove('show');
+      mobileMenuButton.classList.remove('active');
+      mobileMenuButton.innerHTML = '<i class="ri-menu-line ri-lg"></i>';
+      setTimeout(() => {
+        mobileMenu.classList.add('hidden');
+      }, 300);
+    }
+  });
 });
 </script>
 </body>
